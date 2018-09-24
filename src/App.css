@@ -3,19 +3,41 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  animation: App-logo-spin  20s linear;
+  transform-origin: 50% 50%;
+    transition: transform 30s linear;
+  height: 120px;
+  padding: 100px;
 }
 
 .App-header {
-  background-color: #992;
-  height: 450;
-  padding: 20px;
+  background-color: #e8e5e2;
+  height: 800;
+  padding: 250px;
   color: white;
 }
 
+.App-second-column {
+  background-color: white;
+  height: 800;
+  padding: 250px;
+  color: white;
+
+}
+
+.App-third-column {
+  background-color: steelblue;
+  height: 800;
+  padding: 250px;
+  color: white;
+
+}
+
 .App-title {
-  font-size: 1.5em;
+  font-size: 22px;
+  float: left;
+  color: black;
+
 }
 
 .App-intro {
@@ -25,4 +47,5 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+  transform: scale(2) rotate(0.1deg);
 }
