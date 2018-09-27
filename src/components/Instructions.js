@@ -7,27 +7,31 @@ import {
   Link,
   withRouter
 } from "react-router-dom";
+import setAuthToken from "../components/utils";
 
 class Instructions extends Component {
+  componentDidMount() {
+    if (this.props.match.params.token) {
+      const token = this.props.match.params.token;
+      setAuthToken(token);
+      console.log(token);
+    }
+  }
   render() {
     return (
       <div className="App">
         <header className="App-third-column">
-
-
-            PLease click on the link below to take your test! <br />
-
-        <Button>
+          <h2> Please click to take your test! </h2>
+        </header>
+        <button>
           <input
             type="submit"
             className="App-second-column"
             placeholder="Press here"
-            <h3>{this.props.match.params.candidateID}</h3>
-        </Button>
-
-
+          />
+        </button>
       </div>
-    )
+    );
   }
 }
 export default withRouter(Instructions);

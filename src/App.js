@@ -2,19 +2,20 @@ import React, { Component } from "react";
 
 //Components
 import Landing from "../src/components/Landing";
+import Instructions from "../src/components/Instructions";
 
 // Router
-import { Route, Link } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Case>
+        <Switch>
           <Route exact path="/" component={Landing} />
-          <Route path="/instructions/:candidateID" component={Instructions} />
-        </Case>
+          <Route path="/instructions/:token" component={Instructions} />
+        </Switch>
       </div>
     );
   }
