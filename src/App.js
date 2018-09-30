@@ -2,10 +2,12 @@
 
   //Components
   import Landing from '../src/components/Landing';
+  import EmployerForm from '../src/components/EmployerForm';
+  import ThankYou from '../src/components/ThankYou';
+
 
 // Router
-import {Route, Link } from "react-router-dom";
-import { BrowserRouter } from 'react-router-dom'
+import {Route } from "react-router-dom";
 
 
   class App extends Component {
@@ -13,6 +15,9 @@ import { BrowserRouter } from 'react-router-dom'
       return (
         <div>
           <Route exact path="/" component={Landing} />
+          <Route exact path="/Submit" component={EmployerForm} />
+          <Route exact path="/thankyou" component={ThankYou} />
+
 
       </div>
       );

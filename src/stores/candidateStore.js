@@ -1,48 +1,46 @@
 import React from "react";
-import { decorate, observable, computed, action } from "mobx";
+import { decorate, observable, action } from "mobx";
+import {withRouter} from 'react-router-dom';
+import {observer} from "mobx-react";
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://127.0.0.1:8000"
+  baseURL: "http://127.0.0.1:8000/"
 });
 
 class CandidateStore {
   constructor() {
     this.candidateEmail = "";
-    this.candidates = [];
-    this.employerEmail = "";
-    this.employer = [];
-    this.employerCompany = "";
+    this.companyEmail = "";
+    this.companyName = "";
     this.loading = true;
+    this.candidates = [];
   }
 
-  submitcandidatemail(e) {
-    e.preventDefault();
+  submitcandidatemail(data) {
+    // e.preventDefault();
+    console.log("Entered the store")
+    //
+    // let obj = {
+    //   candidate_email: this.candidateEmail,
+    //   company_name: this.companyName,
+    //   company_email: this.companyEmail
+    // };
 
-    let obj = {
-      candidate_email: this.candidateEmail,
-      company_name: this.companyName,
-      company_email: this.companyEmail
-    };
+    axios.post("http://127.0.0.1:8000/candidate/", data)
 
-    this.candidates.push(obj);
+      .then(response => console.log(response))
 
-    // instance
-    //   .post("/", obj)
-    //   .then(res => res.data)
-    //   .then(x => {
-    //     x = obj;
-    //   })
-    //   .catch(err => console.error(err));
+      .catch(error => console.log(error));
+
   }
 }
 
 decorate(CandidateStore, {
   candidateEmail: observable,
-  employerEmail: observable,
-  employerCompany: observable,
+  comapnyEmail: observable,
+  companyName: observable,
   candidates: observable,
-  employer: observable,
   setEmail: action,
   setCompanyEmail: action,
   setCompanyName: action
