@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
-import {BrowserRouter as withRouter} from "react-router-dom";
+import {BrowserRouter as Route, withRouter, Redirect} from "react-router-dom";
 import {observer} from "mobx-react";
 
 
@@ -16,6 +16,7 @@ class EmployerForm extends Component {
       candidateEmail: "",
       companyEmail: "",
       companyName: "",
+      // redirect: false,
 
     };
 
@@ -31,55 +32,122 @@ class EmployerForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    alert('A name was submitted: ' + this.state.companyName);
+    alert('The candidate '+ this.state.candidateEmail+ ' you have submitted has been sent an email to complete the assessment ' );
     CandidateStore.submitcandidatemail(this.state);
-  }
+    // this.setState({redirect: true});
+      }
+  //
+  // navigate(){
+  //
+  //     <Redirect to = '/thankyou' />
+  //
+  //
+  // }
 
   render() {
+
+    // if (this.redirect)
+    // {
+    //   <Route>
+    //   <Redirect to = '/thankyou' />
+    // </Route>
+    // }
+
     return (
-      <div className="App-third-column">
-        {/* <form onSubmit={()=>CandidateStore.submitcandidatemail()}> */}
-        <form onSubmit = {this.handleSubmit}>
+      <form onSubmit = {this.handleSubmit}>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Candidate's Email</label>
+    <input
+      type="text"
+      className = "form-control"
+      name = "candidateEmail"
+      placeholder="Email"
+      // onChange={e => (CandidateStore.candidateEmail = e.target.value)}
+      onChange = {this.handleChange}
+/>
+    {/* <small
+      id="emailHelp"
+      class="form-text text-muted">
+      We'll never share your email with anyone else.
+    </small> */}
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Company's Email</label>
+    <input
+      type="text"
+      className = "form-control"
+      name = "companyEmail"
+      placeholder="Email"
+      onChange = {this.handleChange}
+      />
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Company's Name</label>
 
-            <input
-              type="text"
-              className = "form-control"
-              name = "candidateEmail"
-              // onChange={e => (CandidateStore.candidateEmail = e.target.value)}
-              onChange = {this.handleChange}
+    <input
+      type="text"
+      className = "form-control"
+      name = "companyName"
+      onChange = {this.handleChange}/>
+    {/* <label class="form-group" for="exampleCheck1">
+      Company's Name</label> */}
+  </div>
+  <button
+    type="submit"
+    value="Submit"
+    class="btn btn-primary"
 
-            />
-          <br />
-          <br />
+    >
+  Submit</button>
 
-            <input
-              type="text"
-              className = "form-control"
-              name = "companyEmail"
-              onChange = {this.handleChange}
+</form>
 
-              // onChange={e => (CandidateStore.companyEmail = e.target.value)}
-            />
-          <br />
-          <br />
 
-            <input
-              type="text"
-              className = "form-control"
-              name = "companyName"
-              onChange = {this.handleChange}
-              // onChange={e => (CandidateStore.companyName = e.target.value)}
-            />
-          <br />
-          <br />
-          {/* <Link
-            to= "/thankyou"
-            component = {Button}
-            > Send Email</Link> */}
-          <input type="submit" value="Submit"  />
-          <br />
-        </form>
-      </div>
+
+
+      // <div className="App-third-column">
+      //   {/* <form onSubmit={()=>CandidateStore.submitcandidatemail()}> */}
+      //   <form onSubmit = {this.handleSubmit}>
+      //
+      //       <input
+      //         type="text"
+      //         className = "form-control"
+      //         name = "candidateEmail"
+      //         // onChange={e => (CandidateStore.candidateEmail = e.target.value)}
+      //         onChange = {this.handleChange}
+      //
+      //       />
+      //     <br />
+      //     <br />
+      //
+      //       <input
+      //         type="text"
+      //         className = "form-control"
+      //         name = "companyEmail"
+      //         onChange = {this.handleChange}
+      //
+      //         // onChange={e => (CandidateStore.companyEmail = e.target.value)}
+      //       />
+      //     <br />
+      //     <br />
+      //
+      //       <input
+      //         type="text"
+      //         className = "form-control"
+      //         name = "companyName"
+      //         onChange = {this.handleChange}
+      //         // onChange={e => (CandidateStore.companyName = e.target.value)}
+      //       />
+      //     <br />
+      //     <br />
+      //     {/* <Link
+      //       to= "/thankyou"
+      //       component = {Button}
+      //       > Send Email</Link> */}
+          //   <input type="submit" value="Submit"  />
+          // <br />
+      //   </form>
+      // </div>
     );
   }
 }

@@ -5,15 +5,14 @@ import {observer} from "mobx-react";
 
 
 
-class ThankYou extends Component {
+class NotFound extends Component {
   render()
   {
     return(
       <div className="App">
 
           <p className="App-title">
-            Thank you
-            You're candidate will now be sent an email to start the assessment
+            You're URL is incorrect
           </p>
 
 
@@ -26,4 +25,4 @@ class ThankYou extends Component {
   }
 
 }
-export default observer(ThankYou);
+export default observer(NotFound);
