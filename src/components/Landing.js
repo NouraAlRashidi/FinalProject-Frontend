@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import testlogo from '../logo.svg';
 import '../App.css';
-import { BrowserRouter as Router, Route, Link, withRouter } from "react-router-dom";
+import { BrowserRouter as withRouter } from "react-router-dom";
 import EmployerForm from './EmployerForm';
 
 
@@ -20,7 +19,7 @@ class Landing extends Component {
         <p className="App-second-column">
           Information about what we provide
         </p>
-        <p className="App-intro">
+        <p className="App-intro" >
       Report Mock Assesment          </p>
 
       <p><EmployerForm/></p>
@@ -34,4 +33,4 @@ class Landing extends Component {
   }
 
 }
-export default withRouter(Landing);
+export default Landing;
